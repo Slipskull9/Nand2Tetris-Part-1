@@ -1,0 +1,27 @@
+Fill pseudo code:
+
+RESET // resets the values and program
+temp=24576 // variable used to go from lowest register to highest register for screen
+check=16384 // beginning of keyboard register
+if keyboard=0 goto WHITE
+else goto BLACK
+
+
+WHITE // code for filling the screen white
+temp=temp-1
+Addr=temp
+set M=0
+check=temp-check
+goto RESET if temp=0
+if keyboard=/=0 goto BLACK
+else goto WHITE
+
+BLACK // code for filling the screen black
+temp=temp-1
+Addr=temp
+set M=-1
+check=temp-check
+goto RESET if temp=0
+goto BLACK
+
+

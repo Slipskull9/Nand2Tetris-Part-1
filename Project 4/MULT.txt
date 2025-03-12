@@ -1,0 +1,14 @@
+// pseudo code
+x = R0 
+y = R1 
+i = 1 
+sum = 0
+
+LOOP:
+if i = x goto STOP
+sum = sum + y
+i = i + 1
+goto LOOP
+
+STOP:
+R2 = sum
