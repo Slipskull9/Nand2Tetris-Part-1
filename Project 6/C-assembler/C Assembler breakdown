@@ -1,3 +1,39 @@
 This file is my personal brainstorm record for how I'm going to build the assembler.
 
-More notes to be added later
+Assembler Instructions:
+
+- Open an assembly (.asm) file and parse
+- @ denotes an A-instruction, any following value is to be converted into binary and stored
+- C-instructions are to be hard-coded
+- Variables are to be stored in an address table starting from RAM register 16 and incremented
+- Point markers i.e. (LOOP, RESET) are to be converted into A-instructions and assigned correct register
+- // are to be ignored alongside contents that come after as these are code comments
+- White space is to be ignored
+- Create a text file under a file format of .hack containing parsed contents
+
+What code needs to be built and cohesively put together?
+
+A-instructions: Binary Converter (literally just turns base 10 into base 2 ezpz)
+C-instructions: Intstruction table (constants that are used in place of functions, as each C-instruction comes with a binary string for the ALU)
+INIT: Goes through the .asm code and uses a symbol table to parse through code to remove or convert from human read code to binary
+
+Full structure of the assembler for the design from top to bottom:
+File Input
+INIT
+A-instructions
+C-instructions
+File Output
+
+I'll first need to work on C code for each of the 5 parts and then cohesively put them all together, might use void functions for each?
+
+C-instruction Parser: 
+
+Following this structure dest=comp;jump the C-instruction parser does the following actions:
+    - Adds "j null" at the end of a string if no "j" is detected
+
+    E.g. C-instruction: D = D + 1 ; JLE
+
+    My approach is as follows: 
+    - Anything before "=" is treated a dest variable
+    - Anything between "=" & ";" is treated as computational variable
+    - Anything after ";" is treated as a jump variable
